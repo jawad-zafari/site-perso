@@ -7,13 +7,31 @@ window.addEventListener('load', function() {
     }, 400);
 });
 
-//  GÉRER LE MENU MOBILE ---
+// GÉRER LE MENU MOBILE INTELLIGENT
+
 let btnMobile = document.querySelector('.mobile-menu');
 let links = document.querySelector('.nav-links');
 
-btnMobile.onclick = function() {
+// 1. Ouvrir et fermer le menu hamburger avec le bouton principal
+    btnMobile.onclick = function(event) {
+    event.stopPropagation(); 
     links.classList.toggle('active');
     btnMobile.classList.toggle('active');
+};
+
+let allLinks = document.querySelectorAll('.nav-links a');
+for (let i = 0; i < allLinks.length; i++) {
+    allLinks[i].onclick = function() {
+        links.classList.remove('active');
+        btnMobile.classList.remove('active');
+    };
+}
+
+document.onclick = function(event) {
+    if (!links.contains(event.target) && !btnMobile.contains(event.target)) {
+        links.classList.remove('active');
+        btnMobile.classList.remove('active');
+    }
 };
 
 // CHANGER LA NAVBAR AU SCROLL 
