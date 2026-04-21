@@ -28,3 +28,17 @@ window.onscroll = function() {
     
     checkFadeIn();
 };
+
+// ANIMATION SIMPLE D'APPARITION ---
+function checkFadeIn() {
+    let elements = document.querySelectorAll('.fade-in');
+    
+    for (let i = 0; i < elements.length; i++) {
+        let position = elements[i].getBoundingClientRect().top;
+        let screenHeight = window.innerHeight;
+        
+        if (position < screenHeight - 100) {
+            elements[i].style.animation = 'fadeIn 0.6s ease-in-out forwards';
+        }
+    }
+}
