@@ -15,3 +15,16 @@ btnMobile.onclick = function() {
     links.classList.toggle('active');
     btnMobile.classList.toggle('active');
 };
+
+// CHANGER LA NAVBAR AU SCROLL 
+window.onscroll = function() {
+    let nav = document.querySelector('.navbar');
+    
+    if (window.pageYOffset > 50) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+    
+    checkFadeIn();
+};
